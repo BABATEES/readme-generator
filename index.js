@@ -84,77 +84,7 @@ inquirer.prompt(
     message:'E-mail:',
     name: 'email',
     validate :(value)=>{if (value){return true} else{return 'I need a value'}}
-   }
+   },
 
 ]
-).then (({
-Title,
-Description,
-Installation,
-usage,
-License,
-contribution,
-Tests,
-Questions,
-git,
-email
-
-})=> {
- const template = 
- `#  ${Title}
-
- ##section entitled
-  
- ## Description
- ${Description}
-  #Table of content
-  * [installation](#installation)
-  * [section](#section)
-  * [Description](#Description)
-  * [Installation](#Installation)
-  * [usage](#usage)
-  * [License](#License)
-  * [contribution](#contribution)
-
-
- ## installation
- ${Installation}
-
- ## usage
- ${usage}
-
- ## License
- ${License}
-
- ## contribution
- ${contribution}
-
- ## Tests
- ${Tests}
-
- ## Tests
- ${Questions}
-
- # contact
- * Github: ${git}
- * E-mail : ${email}`;
-
-//function to create readme file
-createNewfile(Title,template)
-
-}
-
-);
-//function to create readme file
-function createNewfile(fileName, data) {
-
-fs.writeFile(`./${fileName.lowercase().split('').join('')}.md`,data,(err)=>{
-
-    if(err){
-        console.log(err)
-    }
-    console.log('your readme is ready')
-}) 
-
-
-}
+)
