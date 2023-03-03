@@ -176,10 +176,5 @@ function createNewfile(Readmegenerator, data) {
         console.log('your readme file is ready')
 
     })
-
-    fs.writeFile('newfile.md', 'Readmegenerator', function (err) {
-        if (err) throw err;
-        console.log('File is created successfully.');
-      });
-
+   
 }
