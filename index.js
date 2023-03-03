@@ -2,6 +2,16 @@ const inquirer = require('inquirer');
 
 const fs = require('fs');
 
+const licensebadges=
+
+{
+
+"MIT" : `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`,
+"Apache" :       `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`,
+ "ISC" :    `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`
+}
+
+Object.keys(licensebadges);
 //inquirer to generate prompt//
 inquirer.prompt(
     [
@@ -51,7 +61,7 @@ inquirer.prompt(
             type: 'list',
             message: "what license did you use?",
             name: 'License',
-            choice: ['The MIT License', 'Apache License', 'GNU License',],
+            choices: Object.keys(licensebadges),
             validate: (value) => { if (value) { return true } else { return 'I need a value' } }
 
         },
@@ -156,9 +166,9 @@ inquirer.prompt(
 
     );
 //This function creates readme file
-function createNewfile(fileName, data) {
+function createNewfile(Readmegenerator, data) {
 
-    fs.writeFile(`./${fileName.lowercase().split('').join('')}.md`, data, (err) => {
+    fs.writeFile(`Readmegenerator.md`, data, (err) => {
 
         if (err) {
             console.log(err)
@@ -167,5 +177,9 @@ function createNewfile(fileName, data) {
 
     })
 
+    fs.writeFile('newfile.md', 'Readmegenerator', function (err) {
+        if (err) throw err;
+        console.log('File is created successfully.');
+      });
 
 }
